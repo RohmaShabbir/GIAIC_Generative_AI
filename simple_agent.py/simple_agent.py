@@ -1,5 +1,6 @@
-from agents import Agent, Runner, AsyncOpenAI, OpenAIChatCompletionsModel
+from agents import Agent, Runner, OpenAIChatCompletionsModel, set_tracing_disabled
 from dotenv import load_dotenv
+from openai import AsyncOpenAI
 import os
 
 load_dotenv()
@@ -10,6 +11,8 @@ client = AsyncOpenAI(
     api_key=gemini_api_key,
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
+
+set_tracing_disabled(disable=True)
 
 model = OpenAIChatCompletionsModel(
     model="gemini-2.0-flash",
